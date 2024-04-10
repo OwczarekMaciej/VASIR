@@ -1,13 +1,21 @@
 # Import necessary libraries
 import requests  # Used for making HTTP requests
 import json  # Used for working with JSON data
+import yaml
+
+with open("keys.yaml", "r") as file:
+    keys = yaml.safe_load(file)
+
+RACHEL = "21m00Tcm4TlvDq8ikWAM"
+GLINDA = "z9fAnlkpzviPz146aGWa"
+ALICE = "Xb7hH8MSUJpSbSDYk0k2"
 
 # Define constants for the script
 CHUNK_SIZE = 1024  # Size of chunks to read/write at a time
-XI_API_KEY = "c058367f6c91fadd943deb53e49a8064"  # Your API key for authentication
-VOICE_ID = "z9fAnlkpzviPz146aGWa"  # ID of the voice model to use
-TEXT_TO_SPEAK = "Test. Wszystko działa"  # Text you want to convert to speech
-OUTPUT_PATH = "output.mp3"  # Path to save the output audio file
+XI_API_KEY = keys["api_key"]  # Your API key for authentication
+VOICE_ID = ALICE  # ID of the voice model to use
+TEXT_TO_SPEAK = "Dzień dobry. Jak mogę ci dzisiaj pomóc? Czy pamiętałeś o wzięciu potrzebnych leków?"  # Text you want to convert to speech
+OUTPUT_PATH = "output1.mp3"  # Path to save the output audio file
 
 # Construct the URL for the Text-to-Speech API request
 tts_url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}/stream"
@@ -23,8 +31,8 @@ data = {
     "text": TEXT_TO_SPEAK,
     "model_id": "eleven_multilingual_v2",
     "voice_settings": {
-        "stability": 0.5,
-        "similarity_boost": 0.8,
+        "stability": 0.8,
+        "similarity_boost": 0.5,
         "style": 0.0,
         "use_speaker_boost": True
     }
