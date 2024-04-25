@@ -23,7 +23,6 @@ ALICE = "Xb7hH8MSUJpSbSDYk0k2"
 CHUNK_SIZE = 1024  # Size of chunks to read/write at a time
 XI_API_KEY = ellabs_api_key  # Your API key for authentication
 VOICE_ID = ALICE  # ID of the voice model to use
-global TEXT_TO_SPEAK # Text you want to convert to speech
 OUTPUT_PATH = "output1.mp3"  # Path to save the output audio file
 
 # Construct the URL for the Text-to-Speech API request
@@ -35,6 +34,7 @@ tts_url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}/stream"
 client = openai.OpenAI()
 model = "gpt-3.5-turbo-16k"
 
+# Najpierw trzeba wygenerować IDki, pojawią się w konsoli 
 # # ==  Create our Assistant (Uncomment this to create your assistant) ==
 # health_assistant = client.beta.assistants.create(
 #     name="Health Care Assistant",
@@ -126,7 +126,7 @@ headers = {
 
 # Set up the data payload for the API request, including the text and voice settings
 data = {
-    "text": response_text,
+    "text": response_text, # Text you want to convert to speech
     "model_id": "eleven_multilingual_v2",
     "voice_settings": {
         "stability": 0.8,
