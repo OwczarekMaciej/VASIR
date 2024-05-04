@@ -34,7 +34,7 @@ tts_url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}/stream"
 client = openai.OpenAI()
 model = "gpt-3.5-turbo-16k"
 
-# Najpierw trzeba wygenerować IDki, pojawią się w konsoli 
+# # Najpierw trzeba wygenerować IDki, pojawią się w konsoli 
 # # ==  Create our Assistant (Uncomment this to create your assistant) ==
 # health_assistant = client.beta.assistants.create(
 #     name="Health Care Assistant",
@@ -62,7 +62,7 @@ asistant_id = "asst_Kwbvp3hjUNrG18BrgJpQimd7"
 thread_id = "thread_I8uuNvB15WGyOUCM36ryvDiD"
 
 # ==== Create a Message ====
-message = "O której godzinie powinienem/a brać moje poranne leki?"
+message = "Ile kroków dziennie powinienem robić?"
 message = client.beta.threads.messages.create(
     thread_id=thread_id, role="user", content=message
 )
@@ -71,7 +71,7 @@ message = client.beta.threads.messages.create(
 run = client.beta.threads.runs.create(
     thread_id=thread_id,
     assistant_id=asistant_id,
-    instructions="Proszę, zwracaj się do użytkownika w prosty i uprzejmy sposób. Ogranicz swoją odpowiedź do kilku zdań.Odpowiedź podaj zwaracjąc się w formie nieosobowej.",
+    instructions="Odpowiedź sformułuj w prosty i uprzejmy sposób. Ogranicz swoją odpowiedź do kilku zdań.",
 )
 
 
