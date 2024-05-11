@@ -13,6 +13,8 @@ load_dotenv()
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 ELLABS_API_KEY = os.environ.get("ELLABS_API_KEY")
 
+# To wszystko potrzebne do Eleven labs no i ten key na górze
+
 RACHEL = "21m00Tcm4TlvDq8ikWAM"
 GLINDA = "z9fAnlkpzviPz146aGWa"
 ALICE = "Xb7hH8MSUJpSbSDYk0k2"
@@ -21,13 +23,14 @@ VOICE_ID = ALICE
 CHUNK_SIZE = 1024
 OUTPUT_PATH = "output1.mp3"
 TTS_URL = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}/stream"
+
+
+# Configure OpenAI client with API key
 OPENAI_MODEL = "gpt-3.5-turbo-16k"
 ASSISTANT_ID = "asst_Kwbvp3hjUNrG18BrgJpQimd7"
 THREAD_ID = "thread_I8uuNvB15WGyOUCM36ryvDiD"
 
-# Configure OpenAI client with API key
 openai.api_key = OPENAI_API_KEY
-
 
 def send_query_to_openai(client, thread_id, assistant_id, message):
     client.beta.threads.messages.create(
@@ -73,7 +76,6 @@ def text_to_speech(text, tts_url, xi_api_key):
         "xi-api-key": xi_api_key
     }
 
-    # Set up the data payload for the API request, including the text and voice settings
     data = {
         "text": text, # Text you want to convert to speech
         "model_id": "eleven_multilingual_v2",
