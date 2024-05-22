@@ -79,7 +79,8 @@ available_functions = {
 #   model="gpt-3.5-turbo-16k",
 #   tools = tools
 # )
-assistant_id = "asst_5zX0mXbZySQsz5w4QgZFnujp"
+# assistant_id = assistant.id
+assistant_id = "asst_fLcev1wh4XyzcdJlpWHkJRDg"
 
 
 def execute_function_call(function_name, arguments):
@@ -148,7 +149,7 @@ def text_to_speech(text, tts_url):
         print(response.text)
 
 
-query = "Mów ciszej"
+query = "Ile wody dziennie powinieniem pić dziennie?"
 run, thread = create_message_and_run(assistant_id=assistant_id, query=query)
 
 
@@ -171,10 +172,10 @@ while True:
         latest_message = messages.data[0]
         text = latest_message.content[0].text.value
         print(text)
-        if text:
-            text_to_speech(text, TTS_URL)
-        else:
-            print("No response received from assistant.")
+        # if text:
+        #     text_to_speech(text, TTS_URL)
+        # else:
+        #     print("No response received from assistant.")
 
         user_input = input()
         if user_input == "STOP":
